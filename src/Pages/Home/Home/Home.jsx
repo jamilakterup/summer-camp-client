@@ -1,9 +1,13 @@
+import Container from "../../../components/Container";
+import Carousel from "../Carousel/Carousel";
 
 const Home = () => {
     return (
-        <div>
-            <h1>This is my sweet home</h1>
-        </div>
+        <>
+            <Carousel />
+            <Container>
+            </Container>
+        </>
     );
 };
 
