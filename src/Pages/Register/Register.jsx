@@ -1,10 +1,13 @@
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
 import {AuthContext} from "../../components/Providers/AuthProviders";
+import {FaEyeSlash, FaEye} from 'react-icons/fa';
 
 const Register = () => {
     const {signUpUser} = useContext(AuthContext);
+    const [isOpen, setIsOpen] = useState(false);
+    const [confirm, setConfirm] = useState(false);
 
     const {register, handleSubmit, formState: {errors}} = useForm();
     const onSubmit = data => {
@@ -42,16 +45,20 @@ const Register = () => {
                         />
                         {errors.email && <p className="text-red-600">{errors.email?.message}</p>}
                     </div>
-                    <div className="form-control">
+                    <div className="form-control relative">
                         <label className="label">
                             <span className="label-text">Password</span>
                         </label>
-                        <input {...register("password", {required: true})} type="password" placeholder="password" className="input input-bordered" />
+                        <input {...register("password", {required: true})} type={`${isOpen ? 'text' : 'password'}`} placeholder="password" className="input input-bordered" />
+                        <span className="absolute bottom-4 right-2" onClick={() => setIsOpen(!isOpen)}>{isOpen ? <FaEyeSlash /> : <FaEye />}</span>
                         {errors.password && <p className="text-red-600">{"Password is required"}</p>}
+                    </div>
+                    <div className="form-control relative">
                         <label className="label">
                             <span className="label-text">Confirm Password</span>
                         </label>
-                        <input {...register("confirm", {required: true})} type="password" placeholder="Confirm password" className="input input-bordered" />
+                        <input {...register("confirm", {required: true})} type={`${confirm ? 'text' : 'password'}`} placeholder="Confirm password" className="input input-bordered" />
+                        <span className="absolute bottom-12 right-2" onClick={() => setConfirm(!confirm)}>{confirm ? <FaEyeSlash /> : <FaEye />}</span>
                         {errors.password && <p className="text-red-600">{"Password is required"}</p>}
                         <label className="label">
                             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
@@ -63,7 +70,7 @@ const Register = () => {
                         </label>
                         <input
                             {...register("photo", {required: true})}
-                            aria-invalid={errors.photo ? "true" : "false"} type="file" className="input input-bordered"
+                            aria-invalid={errors.photo ? "true" : "false"} type="file" className="input input-bordered pt-2"
                         />
                         {errors.photo && <p className="text-red-600">{errors.photo?.message}</p>}
                     </div>

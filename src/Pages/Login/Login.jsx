@@ -1,8 +1,12 @@
+import {useState} from "react";
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
+import {FaEyeSlash, FaEye} from 'react-icons/fa';
 
 const Login = () => {
     const {register, handleSubmit, formState: {errors}} = useForm();
+    const [isOpen, setIsOpen] = useState(false);
+
     const onSubmit = data => console.log(data);
 
     return (
@@ -20,11 +24,12 @@ const Login = () => {
                         />
                         {errors.email && <p className="text-red-600">{errors.email?.message}</p>}
                     </div>
-                    <div className="form-control">
+                    <div className="form-control relative">
                         <label className="label">
                             <span className="label-text">Password</span>
                         </label>
-                        <input {...register("password", {required: true})} type="password" placeholder="password" className="input input-bordered" />
+                        <input {...register("password", {required: true})} type={`${isOpen ? 'text' : 'password'}`} placeholder="password" className="input input-bordered" />
+                        <span className="absolute bottom-12 right-2" onClick={() => setIsOpen(!isOpen)}>{isOpen ? <FaEyeSlash /> : <FaEye />}</span>
                         {errors.password && <p className="text-red-600">{"Password is required"}</p>}
                         <label className="label">
                             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
