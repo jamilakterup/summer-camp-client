@@ -5,12 +5,15 @@ import logo from '../../../assets/logo.png';
 import Container from "../../../components/Container";
 import {FaBars, FaUser} from 'react-icons/fa';
 import {AuthContext} from "../../../components/Providers/AuthProviders";
+import {Button} from "@mui/material";
+
 
 
 
 const NavBar = () => {
     const [activeLink, setActiveLink] = useState('');
     const {user, logOutUser} = useContext(AuthContext);
+
 
     const navItems = <>
         <li className={activeLink === 'home' ? 'active' : ''}>
@@ -51,18 +54,12 @@ const NavBar = () => {
                     </div>
                     <div className="navbar-end">
                         <div title={user?.displayName} className="dropdown dropdown-end">
-                            <label tabIndex={0} className="btn rounded-full"><FaBars />
-                                <div className="avatar placeholder">
-                                    <div className="bg-gray-600 text-neutral-content rounded-full w-9">
-                                        <FaUser className="text-xl" />
-                                    </div>
-                                </div>
-                            </label>
+                            <Button style={{backgroundColor: '#f0f0f0', color: '#000'}} variant="contained"><FaBars className="mt-1" /><FaUser className="text-xl ms-2" /></Button>
                             <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                                 {user?.email ?
                                     <>
                                         <p className="text-center text-xl my-3 flex items-center gap-2 ms-1"><FaUser />{user.displayName}</p>
-                                        <button onClick={() => logOutUser()} className="btn font-bold">LogOut</button>
+                                        <Button onClick={() => logOutUser()} style={{backgroundColor: '#f0f0f0', color: '#000', fontWeight: 'bold'}} variant="text">LogOut</Button>
                                     </>
                                     :
                                     <>

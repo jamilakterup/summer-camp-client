@@ -1,17 +1,18 @@
+import {Button} from '@mui/material';
 import img1 from '../../../assets/img1.png';
 import img2 from '../../../assets/img2.png';
 import img3 from '../../../assets/img3.png';
 import img5 from '../../../assets/img5.jpg';
 
-
 const Carousel = () => {
+
     return (
         <div className="carousel w-full">
             <div id="slide1" className="flex-col-reverse md:flex-row carousel-item relative md:h-full h-[55vh] w-full bg-green-300">
                 <div className='w-full md:w-1/2 md:ps-24 flex items-center justify-center md:mb-0 md:mt-0 my-4'>
                     <div>
-                        <h1 className="md:text-5xl font-bold"> Let the music of summer camp be the soundtrack <br /> of your adventure!</h1>
-                        <button className="btn mt-6">Get Start</button>
+                        <h1 className="md:text-5xl font-bold mb-6"> Let the music of summer camp be the soundtrack <br /> of your adventure!</h1>
+                        <Button style={{backgroundColor: '#f0f0f0', color: '#000'}} variant="contained">Contained</Button>
                     </div>
                 </div>
                 <img src={img2} className="w-full md:w-1/2 md:h-[415px] h-[240px] md:mt-24" />
@@ -24,8 +25,8 @@ const Carousel = () => {
             <div id="slide2" className="flex-col-reverse md:flex-row carousel-item relative md:h-full h-[55vh] w-full bg-green-300">
                 <div className='w-full md:w-1/2 md:ps-24 flex items-center justify-center md:mb-0 md:mt-0 mt-4  mb-12'>
                     <div>
-                        <h1 className="md:text-5xl font-bold"> Summer camp is the stage where your musical <br /> dreams come alive</h1>
-                        <button className="btn mt-6">Get Start</button>
+                        <h1 className="md:text-5xl font-bold mb-6"> Summer camp is the stage where your musical <br /> dreams come alive</h1>
+                        <Button style={{backgroundColor: '#f0f0f0', color: '#000'}} variant="contained">Contained</Button>
                     </div>
                 </div>
                 <img src={img3} className="w-full md:w-1/2 md:h-[415px] h-[240px] md:mt-24" />
@@ -38,8 +39,8 @@ const Carousel = () => {
             <div id="slide3" className="flex-col-reverse md:flex-row carousel-item relative md:h-full h-[55vh]  w-full bg-green-300">
                 <div className='w-full md:w-1/2 md:ps-24 flex items-center justify-center md:mb-0 md:mt-0 mt-4  mb-12'>
                     <div>
-                        <h1 className="md:text-5xl font-bold"> {"Let's"} jump to the music ocean</h1>
-                        <button className="btn mt-6">Get Start</button>
+                        <h1 className="md:text-5xl font-bold mb-6"> {"Let's"} jump to the music ocean</h1>
+                        <Button style={{backgroundColor: '#f0f0f0', color: '#000'}} variant="contained">Contained</Button>
                     </div>
                 </div>
                 <img src={img1} className="w-full md:w-1/2 md:h-[415px] h-[240px] md:mt-24" />
@@ -52,8 +53,8 @@ const Carousel = () => {
             <div id="slide4" className="flex-col-reverse md:flex-row carousel-item relative md:h-full h-[55vh]  w-full bg-green-300">
                 <div className='w-full md:w-1/2 md:ps-24 flex items-center justify-center md:mb-0 md:mt-0 mt-4  mb-12'>
                     <div>
-                        <h1 className="md:text-5xl font-bold"> Let the music of summer camp be the soundtrack <br /> of your adventure!</h1>
-                        <button className="btn mt-6">Get Start</button>
+                        <h1 className="md:text-5xl font-bold mb-6"> Let the music of summer camp be the soundtrack <br /> of your adventure!</h1>
+                        <Button style={{backgroundColor: '#f0f0f0', color: '#000'}} variant="contained">Contained</Button>
                     </div>
                 </div>
                 <img src={img5} className="w-full md:w-1/2 md:h-[415px] h-[240px] md:mt-24" />
@@ -63,7 +64,7 @@ const Carousel = () => {
                     <a href="#slide1" className="btn btn-circle">❯</a>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

@@ -1,13 +1,15 @@
 import {useContext, useState} from "react";
 import {useForm} from "react-hook-form";
 import {Link, useLocation, useNavigate} from "react-router-dom";
-import {FaEyeSlash, FaEye} from 'react-icons/fa';
+import {FaEyeSlash, FaEye, FaGoogle} from 'react-icons/fa';
 import {AuthContext} from "../../components/Providers/AuthProviders";
+import {Button} from "@mui/material";
 
 const Login = () => {
+    const {signInUser, signUpWithGoogle} = useContext(AuthContext);
     const {register, handleSubmit, formState: {errors}} = useForm();
     const [isOpen, setIsOpen] = useState(false);
-    const {signInUser} = useContext(AuthContext);
+
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
@@ -22,6 +24,17 @@ const Login = () => {
             })
             .catch(err => console.log(err))
     };
+
+    const handleGoogleLogin = () => {
+        signUpWithGoogle()
+            .then(result => {
+                const loggedUser = result.user
+                console.log(loggedUser);
+                navigate(from, {replace: true});
+            })
+            .catch(err => console.log(err));
+    }
+
 
     return (
         <div className="hero min-h-screen bg-base-200 py-32">
@@ -50,15 +63,14 @@ const Login = () => {
                         </label>
                     </div>
                     <div className="form-control mt-6">
-                        <input type="submit" value="Login" className="btn bg-slate-300" />
+                        {/* <input type="submit" value="Login" className="btn bg-slate-300" /> */}
+                        <Button type="submit" style={{backgroundColor: '#f0f0f0', color: '#000'}} variant="contained">Login</Button>
                     </div>
                     <p className="label-text-alt">New to account? <Link className=" link link-hover" to='/register'>Register</Link></p>
                 </form>
                 <p className="divider">or</p>
                 <div className="text-center mb-6">
-                    <button className="btn btn-circle btn-outline">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                    </button>
+                    <Button style={{backgroundColor: '#f0f0f0', color: '#000', height: '60px', width: '20px', borderRadius: '50%'}} variant="contained"><FaGoogle className="text-xl" onClick={handleGoogleLogin} /></Button>
                 </div>
             </div>
         </div>
