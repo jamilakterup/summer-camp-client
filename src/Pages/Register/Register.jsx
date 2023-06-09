@@ -1,9 +1,21 @@
+import {useContext} from "react";
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
+import {AuthContext} from "../../components/Providers/AuthProviders";
 
 const Register = () => {
+    const {signUpUser} = useContext(AuthContext);
+
     const {register, handleSubmit, formState: {errors}} = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        console.log(data)
+        signUpUser(data.email, data.password)
+            .then(result => {
+                const newUser = result.user;
+                console.log(newUser);
+            })
+            .catch(err => console.log(err))
+    };
 
     return (
         <div className="hero min-h-screen bg-base-200 py-32">
@@ -12,10 +24,20 @@ const Register = () => {
                 <form onSubmit={handleSubmit(onSubmit)} className="card-body py-2">
                     <div className="form-control">
                         <label className="label">
+                            <span className="label-text">Name</span>
+                        </label>
+                        <input
+                            {...register("name", {required: true})}
+                            aria-invalid={errors.name ? "true" : "false"} type="text" placeholder="name" className="input input-bordered"
+                        />
+                        {errors.name && <p className="text-red-600">{"Please enter your name"}</p>}
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
                             <span className="label-text">Email</span>
                         </label>
                         <input
-                            {...register("email", {required: "Email Address is required"})}
+                            {...register("email", {required: true})}
                             aria-invalid={errors.email ? "true" : "false"} type="email" placeholder="email" className="input input-bordered"
                         />
                         {errors.email && <p className="text-red-600">{errors.email?.message}</p>}
@@ -27,8 +49,23 @@ const Register = () => {
                         <input {...register("password", {required: true})} type="password" placeholder="password" className="input input-bordered" />
                         {errors.password && <p className="text-red-600">{"Password is required"}</p>}
                         <label className="label">
+                            <span className="label-text">Confirm Password</span>
+                        </label>
+                        <input {...register("confirm", {required: true})} type="password" placeholder="Confirm password" className="input input-bordered" />
+                        {errors.password && <p className="text-red-600">{"Password is required"}</p>}
+                        <label className="label">
                             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                         </label>
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Photo URL</span>
+                        </label>
+                        <input
+                            {...register("photo", {required: true})}
+                            aria-invalid={errors.photo ? "true" : "false"} type="file" className="input input-bordered"
+                        />
+                        {errors.photo && <p className="text-red-600">{errors.photo?.message}</p>}
                     </div>
                     <div className="form-control mt-6">
                         <input type="submit" value="Register" className="btn bg-slate-300" />

@@ -1,14 +1,17 @@
-import {useState} from "react";
+import {useContext, useState} from "react";
 import './NavBar.css';
 import {Link} from "react-router-dom";
 import logo from '../../../assets/logo.png';
 import Container from "../../../components/Container";
 import {FaBars, FaUser} from 'react-icons/fa';
+import {AuthContext} from "../../../components/Providers/AuthProviders";
 
 
 
 const NavBar = () => {
     const [activeLink, setActiveLink] = useState('');
+    const {user} = useContext(AuthContext);
+    console.log(user);
 
     const navItems = <>
         <li className={activeLink === 'home' ? 'active' : ''}>
