@@ -5,19 +5,25 @@ import {AuthContext} from "../../components/Providers/AuthProviders";
 import {FaEyeSlash, FaEye} from 'react-icons/fa';
 
 const Register = () => {
-    const {signUpUser} = useContext(AuthContext);
+    const {signUpUser, updateUser} = useContext(AuthContext);
     const [isOpen, setIsOpen] = useState(false);
     const [confirm, setConfirm] = useState(false);
 
     const {register, handleSubmit, formState: {errors}} = useForm();
     const onSubmit = data => {
         console.log(data)
-        signUpUser(data.email, data.password)
-            .then(result => {
-                const newUser = result.user;
-                console.log(newUser);
-            })
-            .catch(err => console.log(err))
+        if (data.password === data.confirm) {
+            signUpUser(data.email, data.password)
+                .then(result => {
+                    const newUser = result.user;
+                    console.log(newUser);
+                    updateUser(result.user, data.name)
+                })
+                .catch(err => console.log(err))
+
+        } else {
+            alert('Please enter right password')
+        }
     };
 
     return (
