@@ -1,6 +1,6 @@
 import {useContext, useState} from "react";
 import {useForm} from "react-hook-form";
-import {Link} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import {FaEyeSlash, FaEye} from 'react-icons/fa';
 import {AuthContext} from "../../components/Providers/AuthProviders";
 
@@ -8,6 +8,9 @@ const Login = () => {
     const {register, handleSubmit, formState: {errors}} = useForm();
     const [isOpen, setIsOpen] = useState(false);
     const {signInUser} = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
 
     const onSubmit = data => {
         console.log(data)
@@ -15,6 +18,7 @@ const Login = () => {
             .then(result => {
                 const loggedUsr = result.user;
                 console.log(loggedUsr);
+                navigate(from, {replace: true})
             })
             .catch(err => console.log(err))
     };

@@ -22,9 +22,11 @@ const NavBar = () => {
         <li className={activeLink === 'Classes' ? 'active' : ''}>
             <Link to='/' onClick={() => setActiveLink('Classes')} className="font-semibold">Classes</Link>
         </li>
-        <li className={activeLink === 'Dashboard' ? 'active' : ''}>
-            <Link to='/' onClick={() => setActiveLink('Dashboard')} className="font-semibold">Dashboard </Link>
-        </li>
+        {
+            user?.email ? <li className={activeLink === 'Dashboard' ? 'active' : ''}>
+                <Link to='/' onClick={() => setActiveLink('Dashboard')} className="font-semibold">Dashboard </Link>
+            </li> : ''
+        }
     </>
 
     return (
@@ -48,7 +50,7 @@ const NavBar = () => {
                         </ul>
                     </div>
                     <div className="navbar-end">
-                        <div className="dropdown dropdown-end">
+                        <div title={user?.displayName} className="dropdown dropdown-end">
                             <label tabIndex={0} className="btn rounded-full"><FaBars />
                                 <div className="avatar placeholder">
                                     <div className="bg-gray-600 text-neutral-content rounded-full w-9">
@@ -58,7 +60,10 @@ const NavBar = () => {
                             </label>
                             <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                                 {user?.email ?
-                                    <button onClick={() => logOutUser()} className="btn font-bold">LogOut</button>
+                                    <>
+                                        <p className="text-center text-xl my-3 flex items-center gap-2 ms-1"><FaUser />{user.displayName}</p>
+                                        <button onClick={() => logOutUser()} className="btn font-bold">LogOut</button>
+                                    </>
                                     :
                                     <>
                                         <li className={activeLink === 'login' ? 'active' : ''}>

@@ -1,6 +1,6 @@
 import {useContext, useState} from "react";
 import {useForm} from "react-hook-form";
-import {Link} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import {AuthContext} from "../../components/Providers/AuthProviders";
 import {FaEyeSlash, FaEye} from 'react-icons/fa';
 
@@ -8,6 +8,9 @@ const Register = () => {
     const {signUpUser, updateUser} = useContext(AuthContext);
     const [isOpen, setIsOpen] = useState(false);
     const [confirm, setConfirm] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
 
     const {register, handleSubmit, formState: {errors}} = useForm();
     const onSubmit = data => {
@@ -17,7 +20,8 @@ const Register = () => {
                 .then(result => {
                     const newUser = result.user;
                     console.log(newUser);
-                    updateUser(result.user, data.name)
+                    updateUser(result.user, data.name);
+                    navigate(from, {replace: true});
                 })
                 .catch(err => console.log(err))
 
