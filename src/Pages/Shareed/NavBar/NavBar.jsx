@@ -3,7 +3,7 @@ import './NavBar.css';
 import {Link} from "react-router-dom";
 import logo from '../../../assets/logo.png';
 import Container from "../../../components/Container";
-import {FaBars} from 'react-icons/fa';
+import {FaBars, FaUser} from 'react-icons/fa';
 
 
 
@@ -49,14 +49,18 @@ const NavBar = () => {
                         <div className="dropdown dropdown-end">
                             <label tabIndex={0} className="btn rounded-full"><FaBars />
                                 <div className="avatar placeholder">
-                                    <div className="bg-neutral-focus text-neutral-content rounded-full w-9">
-                                        <span className="text-xs">AA</span>
+                                    <div className="bg-gray-600 text-neutral-content rounded-full w-9">
+                                        <FaUser className="text-xl" />
                                     </div>
                                 </div>
                             </label>
                             <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                                <li><Link>Login</Link></li>
-                                <li><Link>Register</Link></li>
+                                <li className={activeLink === 'login' ? 'active' : ''}>
+                                    <Link to='/login' onClick={() => setActiveLink('login')}>Login</Link>
+                                </li>
+                                <li className={activeLink === 'register' ? 'active' : ''}>
+                                    <Link to='/register' onClick={() => setActiveLink('register')}>Register</Link>
+                                </li>
                             </ul>
                         </div>
                     </div>
