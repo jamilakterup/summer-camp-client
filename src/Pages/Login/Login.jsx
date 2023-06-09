@@ -1,13 +1,23 @@
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {useForm} from "react-hook-form";
 import {Link} from "react-router-dom";
 import {FaEyeSlash, FaEye} from 'react-icons/fa';
+import {AuthContext} from "../../components/Providers/AuthProviders";
 
 const Login = () => {
     const {register, handleSubmit, formState: {errors}} = useForm();
     const [isOpen, setIsOpen] = useState(false);
+    const {signInUser} = useContext(AuthContext);
 
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        console.log(data)
+        signInUser(data.email, data.password)
+            .then(result => {
+                const loggedUsr = result.user;
+                console.log(loggedUsr);
+            })
+            .catch(err => console.log(err))
+    };
 
     return (
         <div className="hero min-h-screen bg-base-200 py-32">
@@ -29,7 +39,7 @@ const Login = () => {
                             <span className="label-text">Password</span>
                         </label>
                         <input {...register("password", {required: true})} type={`${isOpen ? 'text' : 'password'}`} placeholder="password" className="input input-bordered" />
-                        <span className="absolute bottom-12 right-2" onClick={() => setIsOpen(!isOpen)}>{isOpen ? <FaEyeSlash /> : <FaEye />}</span>
+                        <span className="absolute bottom-12 right-2" onClick={() => setIsOpen(!isOpen)}>{isOpen ? <FaEye /> : <FaEyeSlash />}</span>
                         {errors.password && <p className="text-red-600">{"Password is required"}</p>}
                         <label className="label">
                             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>

@@ -10,8 +10,7 @@ import {AuthContext} from "../../../components/Providers/AuthProviders";
 
 const NavBar = () => {
     const [activeLink, setActiveLink] = useState('');
-    const {user} = useContext(AuthContext);
-    console.log(user);
+    const {user, logOutUser} = useContext(AuthContext);
 
     const navItems = <>
         <li className={activeLink === 'home' ? 'active' : ''}>
@@ -58,12 +57,18 @@ const NavBar = () => {
                                 </div>
                             </label>
                             <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                                <li className={activeLink === 'login' ? 'active' : ''}>
-                                    <Link to='/login' onClick={() => setActiveLink('login')}>Login</Link>
-                                </li>
-                                <li className={activeLink === 'register' ? 'active' : ''}>
-                                    <Link to='/register' onClick={() => setActiveLink('register')}>Register</Link>
-                                </li>
+                                {user?.email ?
+                                    <button onClick={() => logOutUser()} className="btn font-bold">LogOut</button>
+                                    :
+                                    <>
+                                        <li className={activeLink === 'login' ? 'active' : ''}>
+                                            <Link to='/login' onClick={() => setActiveLink('login')}>Login</Link>
+                                        </li>
+                                        <li className={activeLink === 'register' ? 'active' : ''}>
+                                            <Link to='/register' onClick={() => setActiveLink('register')}>Register</Link>
+                                        </li>
+                                    </>
+                                }
                             </ul>
                         </div>
                     </div>

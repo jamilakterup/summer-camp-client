@@ -56,7 +56,7 @@ const Register = () => {
                             <span className="label-text">Password</span>
                         </label>
                         <input {...register("password", {required: true})} type={`${isOpen ? 'text' : 'password'}`} placeholder="password" className="input input-bordered" />
-                        <span className="absolute bottom-4 right-2" onClick={() => setIsOpen(!isOpen)}>{isOpen ? <FaEyeSlash /> : <FaEye />}</span>
+                        <span className="absolute bottom-4 right-2" onClick={() => setIsOpen(!isOpen)}>{isOpen ? <FaEye /> : <FaEyeSlash />}</span>
                         {errors.password && <p className="text-red-600">{"Password is required"}</p>}
                     </div>
                     <div className="form-control relative">
@@ -64,7 +64,7 @@ const Register = () => {
                             <span className="label-text">Confirm Password</span>
                         </label>
                         <input {...register("confirm", {required: true})} type={`${confirm ? 'text' : 'password'}`} placeholder="Confirm password" className="input input-bordered" />
-                        <span className="absolute bottom-12 right-2" onClick={() => setConfirm(!confirm)}>{confirm ? <FaEyeSlash /> : <FaEye />}</span>
+                        <span className="absolute bottom-12 right-2" onClick={() => setConfirm(!confirm)}>{confirm ? <FaEye /> : <FaEyeSlash />}</span>
                         {errors.password && <p className="text-red-600">{"Password is required"}</p>}
                         <label className="label">
                             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
