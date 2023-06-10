@@ -1,5 +1,4 @@
-import {useContext, useState} from "react";
-import './NavBar.css';
+import {useContext} from "react";
 import {Link} from "react-router-dom";
 import logo from '../../../assets/logo.png';
 import Container from "../../../components/Container";
@@ -10,23 +9,22 @@ import {Button} from "@mui/material";
 
 
 const NavBar = () => {
-    const [activeLink, setActiveLink] = useState('');
     const {user, logOutUser} = useContext(AuthContext);
 
 
     const navItems = <>
-        <li className={activeLink === 'home' ? 'active' : ''}>
-            <Link to='/' onClick={() => setActiveLink('home')} className="font-semibold">Home</Link>
+        <li>
+            <Link to='/' className="font-semibold">Home</Link>
         </li>
-        <li className={activeLink === 'Instructors' ? 'active' : ''}>
-            <Link to='/' onClick={() => setActiveLink('Instructors')} className="font-semibold">Instructors</Link>
+        <li>
+            <Link className="font-semibold">Instructors</Link>
         </li>
-        <li className={activeLink === 'Classes' ? 'active' : ''}>
-            <Link to='/' onClick={() => setActiveLink('Classes')} className="font-semibold">Classes</Link>
+        <li>
+            <Link to='/' className="font-semibold">Classes</Link>
         </li>
         {
-            user?.email ? <li className={activeLink === 'Dashboard' ? 'active' : ''}>
-                <Link to='/' onClick={() => setActiveLink('Dashboard')} className="font-semibold">Dashboard </Link>
+            user?.email ? <li>
+                <Link to='/' className="font-semibold">Dashboard </Link>
             </li> : ''
         }
     </>
@@ -44,7 +42,7 @@ const NavBar = () => {
                                 {navItems}
                             </ul>
                         </div>
-                        <Link to='/' onClick={() => setActiveLink('home')}><img className="w-32" title="Summer Music Academy" src={logo} alt="logo" /></Link>
+                        <Link to='/'><img className="w-32" title="Summer Music Academy" src={logo} alt="logo" /></Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
@@ -62,11 +60,11 @@ const NavBar = () => {
                                     </>
                                     :
                                     <>
-                                        <li className={activeLink === 'login' ? 'active' : ''}>
-                                            <Link to='/login' onClick={() => setActiveLink('login')}>Login</Link>
+                                        <li>
+                                            <Link to='/login'>Login</Link>
                                         </li>
-                                        <li className={activeLink === 'register' ? 'active' : ''}>
-                                            <Link to='/register' onClick={() => setActiveLink('register')}>Register</Link>
+                                        <li>
+                                            <Link to='/register'>Register</Link>
                                         </li>
                                     </>
                                 }
