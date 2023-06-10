@@ -17,10 +17,10 @@ const NavBar = () => {
             <Link to='/' className="font-semibold">Home</Link>
         </li>
         <li>
-            <Link className="font-semibold">Instructors</Link>
+            <Link to='/instructors' className="font-semibold">Instructors</Link>
         </li>
         <li>
-            <Link to='/' className="font-semibold">Classes</Link>
+            <Link to='/allClass' className="font-semibold">Classes</Link>
         </li>
         {
             user?.email ? <li>

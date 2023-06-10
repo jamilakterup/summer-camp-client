@@ -3,7 +3,8 @@ import Home from "../Pages/Home/Home/Home";
 import Main from "../components/Main";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
-import AllInstructors from "../Pages/Home/AllInstructors/AllInstructors";
+import AllInstructors from "../Pages/AllInstructors/AllInstructors";
+import AllClasses from "../Pages/AllClasses/AllClasses";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
             {
                 path: 'instructors',
                 element: <AllInstructors />
+            },
+            {
+                path: 'allClass',
+                element: <AllClasses />
             }
         ]
     },
