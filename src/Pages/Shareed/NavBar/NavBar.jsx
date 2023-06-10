@@ -9,7 +9,6 @@ import {Button} from "@mui/material";
 
 
 
-
 const NavBar = () => {
     const [activeLink, setActiveLink] = useState('');
     const {user, logOutUser} = useContext(AuthContext);

@@ -1,0 +1,56 @@
+[
+    {
+        "_id": "6483fe7c9373fd65d9190921",
+        "class": "Folk music",
+        "classImg": "https://i.ibb.co/6NDPMQ5/190311-MIFolk-001.jpg",
+        "description": "Folk music refers to the traditional music that is deeply rooted in a particular culture or community. It is usually passed down through generations orally and carries the stories, values, and traditions of a specific region or group of people. ",
+        "students": 42,
+        "instructor": "jamil",
+        "instructorImg": "https://i.ibb.co/C1tR1Kc/Joe-Piano.webp"
+    },
+    {
+        "_id": "6483fe7c6af74afd3f732d20",
+        "class": "Classical music",
+        "classImg": "https://i.ibb.co/cDWMN8D/Classical-Music-For-Kids.jpg",
+        "description": "Classical music refers to a genre of music that emerged in the Western tradition and is considered to be refined and sophisticated. It encompasses a wide range of styles and compositions spanning over several centuries, from the medieval period to the present day. ",
+        "students": 34,
+        "instructor": "jamil",
+        "instructorImg": "https://i.ibb.co/GtrHjwY/Shifting-in-and-out-of-thumb-position-SS-cover-image.jpg"
+    },
+    {
+        "_id": "6483fe7c8065dd50a11f3a2f",
+        "class": "Hip hop music",
+        "classImg": "https://i.ibb.co/xq2GsQr/155719521-tweens-dancing-hip-hop-on-summer-street.webp",
+        "description": "Hip hop music, also known as rap music, originated in African American and Afro-Caribbean communities in the 1970s. It is characterized by rhythmic spoken lyrics, often accompanied by beats, samples, and electronic sounds.",
+        "students": 38,
+        "instructor": "jamil",
+        "instructorImg": "https://i.ibb.co/1JW5XT8/Gian-Signorelli.webp"
+    },
+    {
+        "_id": "6483fe7cd7c07e3c54b7a907",
+        "class": "Funk Music",
+        "classImg": "https://i.ibb.co/bsPQ8qr/1391935358.webp",
+        "description": "Funk music emerged in the 1960s and 1970s as a rhythmic and dance-oriented genre, primarily driven by bass lines, syncopated rhythms, and a strong groove. It blends elements of soul, jazz, and R&B (rhythm and blues) and emphasizes the use of brass instruments, electric guitars, keyboards, and tight drumming patterns. ",
+        "students": 24,
+        "instructor": "jamil",
+        "instructorImg": "https://i.ibb.co/v3rq7sY/avatars-Fa-VJyh-MCu1m6r-JVe-y-ZQdlg-t240x240.jpg"
+    },
+    {
+        "_id": "6483fe7ccb98c218aa7c57a6",
+        "class": "Bible Music",
+        "classImg": "https://i.ibb.co/tCyPgrW/640x640.jpg",
+        "description": "Gospel music is deeply rooted in Christian religious traditions and draws inspiration from biblical texts and hymns. It originated in African American churches in the late 19th and early 20th centuries and has since evolved into a diverse genre.",
+        "students": 36,
+        "instructor": "jamil",
+        "instructorImg": "https://i.ibb.co/svQbkjp/SJM-L-EYETOCVOER-1129-01.webp"
+    },
+    {
+        "_id": "6483fe7c9d56098344bfa71b",
+        "class": "Pop Music",
+        "classImg": "https://i.ibb.co/ctbJCXQ/265325708-1024x700.webp",
+        "description": "Pop music, short for popular music, is a genre that is designed to appeal to a wide audience. It is characterized by its catchy melodies, simple song structures, and relatable lyrics.",
+        "students": 48,
+        "instructor": "jamil",
+        "instructorImg": "https://i.ibb.co/CK7ymVv/f51dc5aac90ee6a5fca1bcc3f84246e405-12-ariana-grande-rsocial-w1200.webp"
+    }
+]
