@@ -18,7 +18,8 @@ const InstructorCard = ({item}) => {
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            {item.class}
+                            <h3>Name: {item.instructor}</h3>
+                            <h4 className='text-xl'>{item.class}</h4>
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                             {item.description.slice(0, 150)}...

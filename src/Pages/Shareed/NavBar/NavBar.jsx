@@ -2,7 +2,7 @@ import {useContext} from "react";
 import {Link} from "react-router-dom";
 import logo from '../../../assets/logo.png';
 import Container from "../../../components/Container";
-import {FaBars, FaUser} from 'react-icons/fa';
+import {FaBars, FaUser, FaMoon, FaSun} from 'react-icons/fa';
 import {AuthContext} from "../../../components/Providers/AuthProviders";
 import {Button} from "@mui/material";
 
@@ -30,7 +30,7 @@ const NavBar = () => {
     </>
 
     return (
-        <div className="fixed top-0 w-full bg-white z-10 shadow-sm border-b-[1px]">
+        <div className="fixed top-0 w-full bg-white z-20 shadow-sm border-b-[1px]">
             <Container >
                 <nav className="navbar px-0">
                     <div className="navbar-start">
@@ -49,7 +49,9 @@ const NavBar = () => {
                             {navItems}
                         </ul>
                     </div>
-                    <div className="navbar-end">
+                    <div className="navbar-end gap-2">
+                        {/* <FaMoon /> */}
+                        <FaSun className="text-2xl" />
                         <div title={user?.displayName} className="dropdown dropdown-end">
                             <Button style={{backgroundColor: '#f0f0f0', color: '#000'}} variant="contained"><FaBars className="mt-1" /><FaUser className="text-xl ms-2" /></Button>
                             <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">

@@ -5,11 +5,15 @@ import Typography from '@mui/material/Typography';
 import {Button, CardActionArea, CardActions} from '@mui/material';
 
 const PopularClassCard = ({item}) => {
-    console.log(item);
+    const available = parseInt(item.totalSeat) - parseInt(item.students);
+    const disabled = available === 0;
+
     return (
-        <div className="">
-            <Card >
-                <CardActionArea>
+        <div>
+            <Card>
+                <CardActionArea disabled={disabled}>
+                    <div className={`${available === 0 ? 'bg-red-500 opacity-90 absolute z-10 h-full w-full' : ''}`}>
+                    </div>
                     <CardMedia
                         component="img"
                         height="140"
@@ -17,18 +21,28 @@ const PopularClassCard = ({item}) => {
                         image={item.classImg}
                         alt="green iguana"
                     />
-                    <CardContent>
+                    <CardContent disabled>
                         <Typography gutterBottom variant="h5" component="div">
                             {item.class}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            {item.description.slice(0, 150)}...
+                            <h4 className='text-xl'>Instructor: {item.instructor}</h4>
+                            <div className="flex justify-between mt-2 me-3">
+                                <div>
+                                    <p>Total seat: {item.totalSeat}</p>
+                                    <p>Students: {item.students}</p>
+                                </div>
+                                <div>
+                                    <p>Available seats: {available}</p>
+                                    <p>Price: ${item.price}</p>
+                                </div>
+                            </div>
                         </Typography>
                     </CardContent>
+                    <CardActions>
+                        <Button style={{backgroundColor: '#f0f0f0', color: '#000', marginBottom: '10px'}} variant="contained">Contained</Button>
+                    </CardActions>
                 </CardActionArea>
-                <CardActions>
-                    <Button style={{backgroundColor: '#f0f0f0', color: '#000', marginBottom: '10px'}} variant="contained">Contained</Button>
-                </CardActions>
             </Card>
         </div>
     );
