@@ -12,6 +12,7 @@ const AuthProviders = ({children}) => {
     const [loading, setLoading] = useState(true);
 
     const signUpWithGoogle = () => {
+        setLoading(true);
         return signInWithPopup(auth, googleProvider);
     }
 
@@ -21,6 +22,7 @@ const AuthProviders = ({children}) => {
     };
 
     const updateUser = (user, name) => {
+        setLoading(true);
         return updateProfile(user, {displayName: name})
             .then(() => { })
             .catch(err => console.log(err));
@@ -32,6 +34,7 @@ const AuthProviders = ({children}) => {
     };
 
     const logOutUser = () => {
+        setLoading(true);
         return signOut(auth);
     };
 

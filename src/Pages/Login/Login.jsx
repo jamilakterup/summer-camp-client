@@ -9,23 +9,28 @@ const Login = () => {
     const {signInUser, signUpWithGoogle} = useContext(AuthContext);
     const {register, handleSubmit, formState: {errors}} = useForm();
     const [isOpen, setIsOpen] = useState(false);
+    const [error, setError] = useState('');
 
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
 
     const onSubmit = data => {
-        console.log(data)
+        setError('')
         signInUser(data.email, data.password)
             .then(result => {
                 const loggedUsr = result.user;
                 console.log(loggedUsr);
                 navigate(from, {replace: true})
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err);
+                setError(err.message)
+            })
     };
 
     const handleGoogleLogin = () => {
+        setError('')
         signUpWithGoogle()
             .then(result => {
                 const loggedUser = result.user
@@ -56,8 +61,9 @@ const Login = () => {
                             <span className="label-text">Password</span>
                         </label>
                         <input {...register("password", {required: true})} type={`${isOpen ? 'text' : 'password'}`} placeholder="password" className="input input-bordered" />
-                        <span className="absolute bottom-12 right-2" onClick={() => setIsOpen(!isOpen)}>{isOpen ? <FaEye /> : <FaEyeSlash />}</span>
+                        <span className="absolute top-[52px] right-2" onClick={() => setIsOpen(!isOpen)}>{isOpen ? <FaEye /> : <FaEyeSlash />}</span>
                         {errors.password && <p className="text-red-600">{"Password is required"}</p>}
+                        <p className="text-red-600">{error}</p>
                         <label className="label">
                             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                         </label>
