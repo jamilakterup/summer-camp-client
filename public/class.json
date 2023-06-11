@@ -8,6 +8,7 @@
         "students": 42,
         "price": 120,
         "instructor": "Sheryl Crow",
+        "email": "sherylcr@gmail.com",
         "instructorImg": "https://i.ibb.co/C1tR1Kc/Joe-Piano.webp"
     },
     {
@@ -19,6 +20,7 @@
         "students": 34,
         "price": 100,
         "instructor": "J-Live",
+        "email": "jlivev@gmail.com",
         "instructorImg": "https://i.ibb.co/GtrHjwY/Shifting-in-and-out-of-thumb-position-SS-cover-image.jpg"
     },
     {
@@ -30,6 +32,7 @@
         "students": 38,
         "price": 110,
         "instructor": "Roberta Flack",
+        "email": "roberta21@gmail.com",
         "instructorImg": "https://i.ibb.co/1JW5XT8/Gian-Signorelli.webp"
     },
     {
@@ -41,6 +44,7 @@
         "students": 24,
         "price": 90,
         "instructor": "Jimmy Driftwood",
+        "email": "jimmy97@gmail.com",
         "instructorImg": "https://i.ibb.co/v3rq7sY/avatars-Fa-VJyh-MCu1m6r-JVe-y-ZQdlg-t240x240.jpg"
     },
     {
@@ -52,6 +56,7 @@
         "students": 36,
         "price": 105,
         "instructor": "Natalie Gauci",
+        "email": "natalie07@gmail.com",
         "instructorImg": "https://i.ibb.co/svQbkjp/SJM-L-EYETOCVOER-1129-01.webp"
     },
     {
@@ -63,6 +68,7 @@
         "students": 50,
         "price": 120,
         "instructor": "Art Garfunkel",
+        "email": "artgarf@gmail.com",
         "instructorImg": "https://i.ibb.co/CK7ymVv/f51dc5aac90ee6a5fca1bcc3f84246e405-12-ariana-grande-rsocial-w1200.webp"
     },
     {
@@ -74,6 +80,7 @@
         "students": 10,
         "price": 50,
         "instructor": "Jenefar",
+        "email": "jenefar7@gmail.com",
         "instructorImg": "https://i.ibb.co/C1tR1Kc/Joe-Piano.webp"
     },
     {
@@ -85,6 +92,7 @@
         "students": 8,
         "price": 60,
         "instructor": "Martinage",
+        "email": "martinage@gmail.com",
         "instructorImg": "https://i.ibb.co/GtrHjwY/Shifting-in-and-out-of-thumb-position-SS-cover-image.jpg"
     },
     {
@@ -96,6 +104,7 @@
         "students": 9,
         "price": 40,
         "instructor": "Watsong",
+        "email": "watsonw1@gmail.com",
         "instructorImg": "https://i.ibb.co/C1tR1Kc/Joe-Piano.webp"
     },
     {
@@ -107,6 +116,7 @@
         "students": 7,
         "price": 30,
         "instructor": "Chroma Bell",
+        "email": "chromab21@gmail.com",
         "instructorImg": "https://i.ibb.co/1JW5XT8/Gian-Signorelli.webp"
     }
 ]

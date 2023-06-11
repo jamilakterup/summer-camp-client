@@ -12,7 +12,7 @@ const PopularClassCard = ({item}) => {
         <div>
             <Card>
                 <CardActionArea disabled={disabled}>
-                    <div className={`${available === 0 ? 'bg-red-500 opacity-90 absolute z-10 h-full w-full' : ''}`}>
+                    <div className={`${available === 0 ? 'bg-red-600 opacity-80 absolute z-10 h-full w-full' : ''}`}>
                     </div>
                     <CardMedia
                         component="img"
