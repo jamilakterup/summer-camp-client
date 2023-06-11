@@ -22,6 +22,7 @@ const PopularClassCard = ({item}) => {
     const disabled = available === 0;
 
     const handleAddToFavorite = (item) => {
+        console.log(item);
         if (user && user.email) {
             const cartItem = {itemId: _id, classImg, className, totalSeat, students, email: user.email}
             console.log(cartItem);
@@ -59,14 +60,15 @@ const PopularClassCard = ({item}) => {
         fetch('http://localhost:5000/carts')
             .then(res => res.json())
             .then(data => {
-                data.find(d => {
-                    if (d.itemId === _id) {
-                        return setIsClicked(true);
+                data.find(e => {
+                    if (e.email === user.email) {
+                        if (e.itemId === _id) {
+                            return setIsClicked(true);
+                        }
                     }
-                });
-
+                })
             })
-    }, [])
+    }, [_id, user.email])
 
     return (
         <div>
