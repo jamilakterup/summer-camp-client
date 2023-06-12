@@ -7,10 +7,12 @@ import {FaBars, FaUser} from 'react-icons/fa';
 import {AuthContext} from "../../../components/Providers/AuthProviders";
 import {Button} from "@mui/material";
 import {IoMdNotificationsOutline} from 'react-icons/io';
+import useCart from "../../../Hooks/useCart";
 
 
 const NavBar = () => {
     const {user, logOutUser} = useContext(AuthContext);
+    const [cart] = useCart();
 
 
     const navItems = <>
@@ -53,7 +55,7 @@ const NavBar = () => {
                     </div>
                     <div className="navbar-end gap-2">
                         <div className="indicator me-4">
-                            <span className="indicator-item badge bg-[#f0f0f0]">0</span>
+                            <span className="indicator-item badge bg-[#f0f0f0]">{cart?.length || 0}</span>
                             <IoMdNotificationsOutline className="text-3xl" />
                             {/* <button className="btn">inbox</button> */}
                         </div>

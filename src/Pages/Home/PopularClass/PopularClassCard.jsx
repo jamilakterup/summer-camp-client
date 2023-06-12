@@ -10,12 +10,14 @@ import {toast} from 'react-hot-toast';
 import {useState} from 'react';
 import Swal from 'sweetalert2';
 import {useEffect} from 'react';
+import useCart from '../../../Hooks/useCart';
 
 const PopularClassCard = ({item}) => {
     const {classImg, className, instructor, totalSeat, students, price, _id} = item;
 
     const [isClicked, setIsClicked] = useState(false);
     const {user} = useContext(AuthContext);
+    const [, refetch] = useCart();
     const navigate = useNavigate();
     const location = useLocation();
     const available = parseInt(item.totalSeat) - parseInt(item.students);
@@ -34,8 +36,8 @@ const PopularClassCard = ({item}) => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.insertedId) {
-                        console.log(data.insertedId)
-                        toast.success('Successfully added to the favorite!')
+                        refetch();
+                        toast.success('Successfully added to the favorite!');
                         setIsClicked(true);
                     }
                 })
@@ -61,14 +63,14 @@ const PopularClassCard = ({item}) => {
             .then(res => res.json())
             .then(data => {
                 data.find(e => {
-                    if (e.email === user.email) {
+                    if (e.email === user?.email) {
                         if (e.itemId === _id) {
-                            return setIsClicked(true);
+                            setIsClicked(true);
                         }
                     }
                 })
             })
-    }, [_id, user.email])
+    }, [_id, user?.email])
 
     return (
         <div>
