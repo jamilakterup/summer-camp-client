@@ -13,7 +13,7 @@ import {useEffect} from 'react';
 import useCart from '../../../Hooks/useCart';
 
 const PopularClassCard = ({item}) => {
-    const {classImg, className, instructor, totalSeat, students, price, _id} = item;
+    const {classImg, className, instructor, totalSeat, instructorEmail, students, price, _id} = item;
 
     const [isClicked, setIsClicked] = useState(false);
     const {user} = useContext(AuthContext);
@@ -26,7 +26,7 @@ const PopularClassCard = ({item}) => {
     const handleAddToFavorite = (item) => {
         console.log(item);
         if (user && user.email) {
-            const cartItem = {itemId: _id, classImg, className, totalSeat, students, email: user.email}
+            const cartItem = {itemId: _id, classImg, className, totalSeat, students, price, instructor, email: user.email, instructorEmail}
             console.log(cartItem);
             fetch('http://localhost:5000/carts', {
                 method: 'POST',
@@ -58,19 +58,6 @@ const PopularClassCard = ({item}) => {
         }
     }
 
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/carts')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             data.find(e => {
-    //                 if (e.email === user?.email) {
-    //                     if (e.itemId === _id) {
-    //                         setIsClicked(true);
-    //                     }
-    //                 }
-    //             })
-    //         })
-    // }, [_id, user?.email])
 
     useEffect(() => {
         cart.find(e => {

@@ -19,7 +19,7 @@ const InstructorCard = ({item}) => {
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
                             <h3>Name: {item.instructor}</h3>
-                            <h4 className='text-[18px] my-2'>Email: {item.email}</h4>
+                            <h4 className='text-[18px] my-2'>Email: {item.instructorEmail}</h4>
                             <h4 className='text-[18px]'>Instructor Of: {item.class}</h4>
                         </Typography>
                         <Typography variant="body2" color="text.secondary">

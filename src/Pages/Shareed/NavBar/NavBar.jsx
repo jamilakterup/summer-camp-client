@@ -27,7 +27,7 @@ const NavBar = () => {
         </li>
         {
             user?.email ? <li>
-                <Link to='/' className="font-semibold">Dashboard </Link>
+                <Link to='/dashboard/listedClass' className="font-semibold">Dashboard </Link>
             </li> : ''
         }
     </>

@@ -5,6 +5,9 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import AllInstructors from "../Pages/AllInstructors/AllInstructors";
 import AllClasses from "../Pages/AllClasses/AllClasses";
+import Dashboard from "../Layout/Dashboard";
+import ListedClass from "../Pages/Dashboard/ListedClass/ListedClass";
+import PrivetRoutes from "./PrivetRoutes/PrivetRoutes";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +36,16 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: 'dashboard',
+        element: <PrivetRoutes><Dashboard /></PrivetRoutes>,
+        children: [
+            {
+                path: 'listedClass',
+                element: <ListedClass />
+            }
+        ]
+    }
 ]);
 
 export default router;
