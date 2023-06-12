@@ -8,6 +8,7 @@ import AllClasses from "../Pages/AllClasses/AllClasses";
 import Dashboard from "../Layout/Dashboard";
 import ListedClass from "../Pages/Dashboard/ListedClass/ListedClass";
 import PrivetRoutes from "./PrivetRoutes/PrivetRoutes";
+import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 
 const router = createBrowserRouter([
     {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
             {
                 path: 'listedClass',
                 element: <ListedClass />
+            },
+            {
+                path: 'allUsers',
+                element: <AllUsers />
             }
         ]
     }

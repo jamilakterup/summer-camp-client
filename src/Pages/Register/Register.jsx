@@ -5,6 +5,7 @@ import {AuthContext} from "../../components/Providers/AuthProviders";
 import {FaEyeSlash, FaEye, FaGoogle} from 'react-icons/fa';
 import {Button} from "@mui/material";
 import {toast} from "react-hot-toast";
+import {Helmet} from "react-helmet";
 
 const Register = () => {
 
@@ -72,6 +73,7 @@ const Register = () => {
 
     return (
         <div className="hero min-h-screen bg-base-200 py-32">
+            <Helmet title="SM Academy/Register" />
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                 <h2 className="text-center text-4xl font-semibold mt-3">Register</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className="card-body py-2">

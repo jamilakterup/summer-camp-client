@@ -5,6 +5,7 @@ import {FaEyeSlash, FaEye, FaGoogle} from 'react-icons/fa';
 import {AuthContext} from "../../components/Providers/AuthProviders";
 import {Button} from "@mui/material";
 import {toast} from "react-hot-toast";
+import {Helmet} from "react-helmet";
 
 const Login = () => {
     const {signInUser, signUpWithGoogle} = useContext(AuthContext);
@@ -45,6 +46,7 @@ const Login = () => {
 
     return (
         <div className="hero min-h-screen bg-base-200 py-32">
+            <Helmet title="SM Academy/Login" />
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                 <h2 className="text-center text-4xl font-semibold mt-3">Login</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className="card-body py-2">
