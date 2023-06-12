@@ -104,7 +104,7 @@ const Register = () => {
                 </form>
                 <p className="divider">or</p>
                 <div className="text-center mb-6">
-                    <Button style={{backgroundColor: '#f0f0f0', color: '#000', height: '60px', width: '20px', borderRadius: '50%'}} variant="contained"><FaGoogle className="text-xl" onClick={handleGoogleLogin} /></Button>
+                    <Button onClick={handleGoogleLogin} style={{backgroundColor: '#f0f0f0', color: '#000', height: '60px', width: '20px', borderRadius: '50%'}} variant="contained"><FaGoogle className="text-xl" /></Button>
                 </div>
             </div>
         </div>

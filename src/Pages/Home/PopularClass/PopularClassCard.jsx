@@ -17,7 +17,7 @@ const PopularClassCard = ({item}) => {
 
     const [isClicked, setIsClicked] = useState(false);
     const {user} = useContext(AuthContext);
-    const [, refetch] = useCart();
+    const [cart, refetch] = useCart();
     const navigate = useNavigate();
     const location = useLocation();
     const available = parseInt(item.totalSeat) - parseInt(item.students);
@@ -58,19 +58,29 @@ const PopularClassCard = ({item}) => {
         }
     }
 
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/carts')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             data.find(e => {
+    //                 if (e.email === user?.email) {
+    //                     if (e.itemId === _id) {
+    //                         setIsClicked(true);
+    //                     }
+    //                 }
+    //             })
+    //         })
+    // }, [_id, user?.email])
+
     useEffect(() => {
-        fetch('http://localhost:5000/carts')
-            .then(res => res.json())
-            .then(data => {
-                data.find(e => {
-                    if (e.email === user?.email) {
-                        if (e.itemId === _id) {
-                            setIsClicked(true);
-                        }
-                    }
-                })
-            })
-    }, [_id, user?.email])
+        cart.find(e => {
+            if (e.email === user?.email) {
+                if (e.itemId === _id) {
+                    setIsClicked(true);
+                }
+            }
+        })
+    }, [_id, cart, user?.email])
 
     return (
         <div>
