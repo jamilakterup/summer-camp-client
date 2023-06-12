@@ -24,8 +24,6 @@ const AuthProviders = ({children}) => {
     const updateUser = (user, name) => {
         setLoading(true);
         return updateProfile(user, {displayName: name})
-            .then(() => { })
-            .catch(err => console.log(err));
     };
 
     const signInUser = (email, password) => {

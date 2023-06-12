@@ -4,6 +4,7 @@ import {Link, useLocation, useNavigate} from "react-router-dom";
 import {FaEyeSlash, FaEye, FaGoogle} from 'react-icons/fa';
 import {AuthContext} from "../../components/Providers/AuthProviders";
 import {Button} from "@mui/material";
+import {toast} from "react-hot-toast";
 
 const Login = () => {
     const {signInUser, signUpWithGoogle} = useContext(AuthContext);
@@ -21,6 +22,7 @@ const Login = () => {
             .then(result => {
                 const loggedUsr = result.user;
                 console.log(loggedUsr);
+                toast.success('Login Successful!')
                 navigate(from, {replace: true})
             })
             .catch(err => {

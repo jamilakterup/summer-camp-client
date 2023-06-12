@@ -4,8 +4,10 @@ import {Link, useLocation, useNavigate} from "react-router-dom";
 import {AuthContext} from "../../components/Providers/AuthProviders";
 import {FaEyeSlash, FaEye, FaGoogle} from 'react-icons/fa';
 import {Button} from "@mui/material";
+import {toast} from "react-hot-toast";
 
 const Register = () => {
+
     const {signUpUser, updateUser, signUpWithGoogle} = useContext(AuthContext);
     const [isOpen, setIsOpen] = useState(false);
     const [confirm, setConfirm] = useState(false);
@@ -15,14 +17,30 @@ const Register = () => {
 
     const {register, handleSubmit, formState: {errors}} = useForm();
     const onSubmit = data => {
-        console.log(data)
+
         if (data.password === data.confirm) {
             signUpUser(data.email, data.password)
                 .then(result => {
                     const newUser = result.user;
                     console.log(newUser);
-                    updateUser(result.user, data.name);
-                    navigate(from, {replace: true});
+                    updateUser(result.user, data.name)
+                        .then(() => {
+                            const savedUser = {name: data.name, email: data.email}
+                            fetch('http://localhost:5000/users', {
+                                method: 'POST',
+                                headers: {'Content-Type': 'application/json'},
+                                body: JSON.stringify(savedUser)
+                            })
+                                .then(res => res.json())
+                                .then(data => {
+                                    if (data.insertedId) {
+                                        toast.success('Register Successful!')
+                                        navigate(from, {replace: true});
+                                    }
+                                })
+                        })
+                        .catch(err => console.log(err));
+
                 })
                 .catch(err => console.log(err))
 
@@ -73,8 +91,8 @@ const Register = () => {
                         </label>
                         <input {...register("password", {required: true, minLength: 6})} type={`${isOpen ? 'text' : 'password'}`} placeholder="password" className="input input-bordered" />
                         <span className="absolute top-[52px] right-2" onClick={() => setIsOpen(!isOpen)}>{isOpen ? <FaEye /> : <FaEyeSlash />}</span>
-                        {errors.password.type === 'required' && <p className="text-red-600">{"Password is required"}</p>}
-                        {errors.password.type === 'minLength' && <p className="text-red-600">{"Password Must be 6 characters or more"}</p>}
+                        {errors.password?.type === 'required' && <p className="text-red-600">{"Password is required"}</p>}
+                        {errors.password?.type === 'minLength' && <p className="text-red-600">{"Password Must be 6 characters or more"}</p>}
                     </div>
                     <div className="form-control relative">
                         <label className="label">
@@ -82,7 +100,7 @@ const Register = () => {
                         </label>
                         <input {...register("confirm", {required: true})} type={`${confirm ? 'text' : 'password'}`} placeholder="Confirm password" className="input input-bordered" />
                         <span className="absolute top-[52px] right-2" onClick={() => setConfirm(!confirm)}>{confirm ? <FaEye /> : <FaEyeSlash />}</span>
-                        {errors.password.type === 'required' && <p className="text-red-600">{"Password is required"}</p>}
+                        {errors.password?.type === 'required' && <p className="text-red-600">{"Password is required"}</p>}
                         <label className="label">
                             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                         </label>

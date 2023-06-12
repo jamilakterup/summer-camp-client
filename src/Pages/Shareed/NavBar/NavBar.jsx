@@ -78,7 +78,7 @@ const NavBar = () => {
                             <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                                 {user?.email ?
                                     <>
-                                        <p className="text-center text-xl my-3 flex items-center gap-2 ms-1"><FaUser />{user.displayName}</p>
+                                        <p className="text-center text-xl my-3 flex items-center gap-2 ms-1"><FaUser />{user?.displayName}</p>
                                         <Button onClick={() => logOutUser()} style={{backgroundColor: '#f0f0f0', color: '#000', fontWeight: 'bold'}} variant="text">LogOut</Button>
                                     </>
                                     :
