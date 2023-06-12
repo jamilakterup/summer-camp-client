@@ -15,7 +15,7 @@ const Register = () => {
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
 
-    const {register, handleSubmit, formState: {errors}} = useForm();
+    const {register, handleSubmit, reset, formState: {errors}} = useForm();
     const onSubmit = data => {
 
         if (data.password === data.confirm) {
@@ -34,13 +34,13 @@ const Register = () => {
                                 .then(res => res.json())
                                 .then(data => {
                                     if (data.insertedId) {
-                                        toast.success('Register Successful!')
+                                        reset();
                                         navigate(from, {replace: true});
+                                        toast.success('Register Successful!')
                                     }
                                 })
                         })
                         .catch(err => console.log(err));
-
                 })
                 .catch(err => console.log(err))
 
@@ -55,7 +55,17 @@ const Register = () => {
             .then(result => {
                 const loggedUser = result.user
                 console.log(loggedUser);
-                navigate(from, {replace: true});
+                const savedUser = {name: loggedUser.displayName, email: loggedUser.email}
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(savedUser)
+                })
+                    .then(res => res.json())
+                    .then(() => {
+                        toast.success('Register Successful!')
+                        navigate(from, {replace: true});
+                    })
             })
             .catch(err => console.log(err));
     }

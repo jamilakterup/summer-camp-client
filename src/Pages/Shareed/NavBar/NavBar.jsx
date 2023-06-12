@@ -14,7 +14,6 @@ const NavBar = () => {
     const {user, logOutUser} = useContext(AuthContext);
     const [cart] = useCart();
 
-
     const navItems = <>
         <li>
             <Link to='/' className="font-semibold">Home</Link>
@@ -76,7 +75,7 @@ const NavBar = () => {
                         <div title={user?.displayName} className="dropdown dropdown-end">
                             <Button style={{backgroundColor: '#f0f0f0', color: '#000'}} variant="contained"><FaBars className="mt-1" /><FaUser className="text-xl ms-2" /></Button>
                             <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                                {user?.email ?
+                                {user ?
                                     <>
                                         <p className="text-center text-xl my-3 flex items-center gap-2 ms-1"><FaUser />{user?.displayName}</p>
                                         <Button onClick={() => logOutUser()} style={{backgroundColor: '#f0f0f0', color: '#000', fontWeight: 'bold'}} variant="text">LogOut</Button>
