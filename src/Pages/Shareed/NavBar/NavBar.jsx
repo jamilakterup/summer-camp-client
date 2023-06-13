@@ -14,6 +14,8 @@ const NavBar = () => {
     const {user, logOutUser} = useContext(AuthContext);
     const [cart] = useCart();
 
+
+
     const navItems = <>
         <li>
             <Link to='/' className="font-semibold">Home</Link>

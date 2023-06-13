@@ -9,17 +9,20 @@ import {BiSelectMultiple} from 'react-icons/bi';
 import {FaWallet, FaHome, FaUsers} from 'react-icons/fa';
 import {Helmet} from "react-helmet";
 import useCart from "../Hooks/useCart";
+import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
     const [cart] = useCart();
     // TODO: load data from the server to have dynamic isAdmin based on data
-    const role = 'admin';
+    // const role = 'admin';
+    const [role] = useAdmin();
+    console.log(role);
     let dashboardContent;
 
     if (role === 'admin') {
         dashboardContent = <>
             <li className="text-xl"><NavLink to='/dashboard/userHome'><FaHome />Admin Home</NavLink></li>
-            <li className="text-xl"><NavLink to='/dashboard/manageUsers'><SiGoogleclassroom />Manage Classes</NavLink></li>
+            <li className="text-xl"><NavLink to='/dashboard/manageClasses'><SiGoogleclassroom />Manage Classes</NavLink></li>
             <li className="text-xl"><NavLink to='/dashboard/manageUsers'><MdManageAccounts />Manage Users</NavLink></li>
             <li className="text-xl"><NavLink to='/dashboard/allUsers'><FaUsers />All Users</NavLink></li>
         </>

@@ -27,6 +27,7 @@ const Register = () => {
                     updateUser(result.user, data.name)
                         .then(() => {
                             const savedUser = {name: data.name, email: data.email}
+                            // setUser({...user, displayName: data.name})
                             fetch('http://localhost:5000/users', {
                                 method: 'POST',
                                 headers: {'Content-Type': 'application/json'},
@@ -41,9 +42,15 @@ const Register = () => {
                                     }
                                 })
                         })
-                        .catch(err => console.log(err));
+                        .catch(err => {
+                            console.log(err)
+                            toast.error(err.message);
+                        });
                 })
-                .catch(err => console.log(err))
+                .catch(err => {
+                    console.log(err)
+                    toast.error(err.message);
+                })
 
         } else {
             alert('Please enter right password')
