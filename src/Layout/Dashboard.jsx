@@ -19,8 +19,8 @@ const Dashboard = () => {
     if (role === 'admin') {
         dashboardContent = <>
             <li className="text-xl"><NavLink to='/dashboard/userHome'><FaHome />Admin Home</NavLink></li>
-            <li className="text-xl"><NavLink to='/dashboard/reservedClass'><SiGoogleclassroom />Manage Classes</NavLink></li>
-            <li className="text-xl"><NavLink to='/dashboard/paymentHistory'><MdManageAccounts />Manage Users</NavLink></li>
+            <li className="text-xl"><NavLink to='/dashboard/manageUsers'><SiGoogleclassroom />Manage Classes</NavLink></li>
+            <li className="text-xl"><NavLink to='/dashboard/manageUsers'><MdManageAccounts />Manage Users</NavLink></li>
             <li className="text-xl"><NavLink to='/dashboard/allUsers'><FaUsers />All Users</NavLink></li>
         </>
     } else if (role === 'instructor') {

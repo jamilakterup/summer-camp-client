@@ -9,6 +9,7 @@ import Dashboard from "../Layout/Dashboard";
 import ListedClass from "../Pages/Dashboard/ListedClass/ListedClass";
 import PrivetRoutes from "./PrivetRoutes/PrivetRoutes";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
+import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 
 const router = createBrowserRouter([
     {
@@ -42,12 +43,18 @@ const router = createBrowserRouter([
         element: <PrivetRoutes><Dashboard /></PrivetRoutes>,
         children: [
             {
+                // for users
                 path: 'listedClass',
                 element: <ListedClass />
             },
+            // for admin
             {
                 path: 'allUsers',
                 element: <AllUsers />
+            },
+            {
+                path: 'manageUsers',
+                element: <ManageUsers />
             }
         ]
     }
