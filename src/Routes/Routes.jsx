@@ -10,6 +10,9 @@ import ListedClass from "../Pages/Dashboard/ListedClass/ListedClass";
 import PrivetRoutes from "./PrivetRoutes/PrivetRoutes";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
+import AddClass from "../Pages/Dashboard/AddClass/AddClass";
+import InstructorRoute from "./PrivetRoutes/InstructorRoute";
+import AdminRoute from "./PrivetRoutes/AdminRoute";
 
 const router = createBrowserRouter([
     {
@@ -47,10 +50,15 @@ const router = createBrowserRouter([
                 path: 'listedClass',
                 element: <ListedClass />
             },
+            // for instructors
+            {
+                path: 'AddClass',
+                element: <InstructorRoute><AddClass /></InstructorRoute>
+            },
             // for admin
             {
                 path: 'allUsers',
-                element: <AllUsers />
+                element: <AdminRoute><AllUsers /></AdminRoute>
             },
             {
                 path: 'manageUsers',
