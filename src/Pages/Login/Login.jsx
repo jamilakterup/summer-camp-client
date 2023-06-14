@@ -37,8 +37,17 @@ const Login = () => {
         signUpWithGoogle()
             .then(result => {
                 const loggedUser = result.user
-                console.log(loggedUser);
-                navigate(from, {replace: true});
+                const savedUser = {name: loggedUser.displayName, email: loggedUser.email}
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(savedUser)
+                })
+                    .then(res => res.json())
+                    .then(() => {
+                        toast.success('Login Successful!')
+                        navigate(from, {replace: true});
+                    })
             })
             .catch(err => console.log(err));
     }

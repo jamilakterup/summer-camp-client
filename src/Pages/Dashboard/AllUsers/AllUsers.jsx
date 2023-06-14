@@ -27,13 +27,9 @@ const AllUsers = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/users/${id}`, {
-                    method: 'DELETE',
-                })
-                    .then(res => res.json())
+                axiosSecure.delete(`/users/${id}`)
                     .then(data => {
-                        console.log(data);
-                        if (data.deletedCount > 0) {
+                        if (data.data.deletedCount > 0) {
                             refetch();
                             Swal.fire(
                                 'Deleted!',

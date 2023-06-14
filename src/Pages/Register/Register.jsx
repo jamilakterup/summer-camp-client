@@ -27,32 +27,6 @@ const Register = () => {
         const formData = new FormData();
         formData.append('image', data.photo[0])
 
-        // fetch(img_hosting_url, {
-        //     method: 'POST',
-        //     body: formData
-        // })
-        //     .then(res => res.json())
-        //     .then(imgResponse => {
-        //         if (imgResponse.success) {
-        //             const imgURL = imgResponse.data.display_url;
-
-        //             axiosSecure.post('/menu', imgURL)
-        //                 .then(data => {
-        //                     if (data.data.insertedId) {
-        //                         reset();
-        //                         Swal.fire({
-        //                             position: 'top-end',
-        //                             icon: 'success',
-        //                             title: 'Item added successfully',
-        //                             showConfirmButton: false,
-        //                             timer: 1500
-        //                         })
-        //                     }
-        //                 })
-        //         }
-        //     })
-
-
 
         if (data.password === data.confirm) {
             fetch(img_hosting_url, {
@@ -61,6 +35,7 @@ const Register = () => {
             })
                 .then(res => res.json())
                 .then(imgResponse => {
+                    console.log(imgResponse);
                     const imgURL = imgResponse.data.display_url;
 
                     signUpUser(data.email, data.password)
@@ -69,9 +44,18 @@ const Register = () => {
                             console.log(newUser);
                             updateUser(data.name, imgURL)
                                 .then(() => {
+                                    const savedUser = {name: data.name, email: data.email}
+                                    fetch('http://localhost:5000/users', {
+                                        method: 'POST',
+                                        headers: {'Content-Type': 'application/json'},
+                                        body: JSON.stringify(savedUser)
+                                    })
+                                        .then(res => res.json())
+                                        .then(() => {
+                                            toast.success('Register Successful!')
+                                            navigate(from, {replace: true});
+                                        })
                                     reset();
-                                    toast.success('Register Successful!');
-                                    navigate(from, {replace: true});
                                 })
                                 .catch(err => {
                                     setLoading(false)
@@ -94,9 +78,10 @@ const Register = () => {
             return;
 
         } else {
-            alert('Please enter right password')
+            toast.error('Please enter right password')
         }
     };
+
 
 
     const handleGoogleLogin = () => {
@@ -141,9 +126,9 @@ const Register = () => {
                         </label>
                         <input
                             {...register("email", {required: true})}
-                            aria-invalid={errors.email ? "true" : "false"} type="email" placeholder="email" className="input input-bordered"
+                            type="email" placeholder="email" className="input input-bordered"
                         />
-                        {errors.email && <p className="text-red-600">{errors.email?.message}</p>}
+                        {errors.email && <p className="text-red-600">{"Email is required"}</p>}
                     </div>
                     <div className="form-control relative">
                         <label className="label">

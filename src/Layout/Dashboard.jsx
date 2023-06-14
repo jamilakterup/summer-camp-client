@@ -11,8 +11,11 @@ import {FaWallet, FaHome, FaUsers} from 'react-icons/fa';
 import {Helmet} from "react-helmet";
 import useCart from "../Hooks/useCart";
 import useRole from "../Hooks/useRole";
+import useAuth from "../Hooks/useAuth";
 
 const Dashboard = () => {
+    const {user} = useAuth();
+    console.log(user);
     const [cart] = useCart();
     // TODO: load data from the server to have dynamic isAdmin based on data
     // const role = 'admin';
@@ -29,7 +32,7 @@ const Dashboard = () => {
         dashboardContent = <>
             <li className="text-xl"><NavLink to='/dashboard/userHome'><FaHome />Instructor Home</NavLink></li>
             <li className="text-xl"><NavLink to='/dashboard/AddClass'><BsFillJournalBookmarkFill />Add a Class</NavLink></li>
-            <li className="text-xl"><NavLink to='/dashboard/reservedClass'><SiGoogleclassroom />My Classes</NavLink></li>
+            <li className="text-xl"><NavLink to='/dashboard/myClass'><SiGoogleclassroom />My Classes</NavLink></li>
             <li className="text-xl"><NavLink to='/dashboard/paymentHistory'><FaUsers />Total Enrolled Students</NavLink></li>
             <li className="text-xl"><NavLink to='/dashboard/paymentHistory'><VscFeedback />Feedback</NavLink></li>
         </>
@@ -60,6 +63,9 @@ const Dashboard = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
                         {/* Sidebar content here */}
+                        {user?.photoURL && <img className="w-32 h-32 rounded-full mx-auto" src={user?.photoURL} alt="" />}
+                        {user?.displayName && <p className="text-2xl mx-auto mb-6">{user.displayName}</p>}
+                        <div className="border mb-5"></div>
                         {dashboardContent}
                     </ul>
 
