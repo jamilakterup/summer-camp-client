@@ -7,9 +7,12 @@ import {Button} from "@mui/material";
 import {toast} from "react-hot-toast";
 import {Helmet} from "react-helmet";
 
+
+const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
+
 const Register = () => {
 
-    const {signUpUser, updateUser, signUpWithGoogle} = useContext(AuthContext);
+    const {signUpUser, updateUser, signUpWithGoogle, setLoading} = useContext(AuthContext);
     const [isOpen, setIsOpen] = useState(false);
     const [confirm, setConfirm] = useState(false);
     const location = useLocation();
@@ -17,40 +20,78 @@ const Register = () => {
     const from = location.state?.from?.pathname || '/';
 
     const {register, handleSubmit, reset, formState: {errors}} = useForm();
+    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
+
     const onSubmit = data => {
 
+        const formData = new FormData();
+        formData.append('image', data.photo[0])
+
+        // fetch(img_hosting_url, {
+        //     method: 'POST',
+        //     body: formData
+        // })
+        //     .then(res => res.json())
+        //     .then(imgResponse => {
+        //         if (imgResponse.success) {
+        //             const imgURL = imgResponse.data.display_url;
+
+        //             axiosSecure.post('/menu', imgURL)
+        //                 .then(data => {
+        //                     if (data.data.insertedId) {
+        //                         reset();
+        //                         Swal.fire({
+        //                             position: 'top-end',
+        //                             icon: 'success',
+        //                             title: 'Item added successfully',
+        //                             showConfirmButton: false,
+        //                             timer: 1500
+        //                         })
+        //                     }
+        //                 })
+        //         }
+        //     })
+
+
+
         if (data.password === data.confirm) {
-            signUpUser(data.email, data.password)
-                .then(result => {
-                    const newUser = result.user;
-                    console.log(newUser);
-                    updateUser(result.user, data.name)
-                        .then(() => {
-                            const savedUser = {name: data.name, email: data.email}
-                            // setUser({...user, displayName: data.name})
-                            fetch('http://localhost:5000/users', {
-                                method: 'POST',
-                                headers: {'Content-Type': 'application/json'},
-                                body: JSON.stringify(savedUser)
-                            })
-                                .then(res => res.json())
-                                .then(data => {
-                                    if (data.insertedId) {
-                                        reset();
-                                        navigate(from, {replace: true});
-                                        toast.success('Register Successful!')
-                                    }
+            fetch(img_hosting_url, {
+                method: 'POST',
+                body: formData
+            })
+                .then(res => res.json())
+                .then(imgResponse => {
+                    const imgURL = imgResponse.data.display_url;
+
+                    signUpUser(data.email, data.password)
+                        .then(result => {
+                            const newUser = result.user;
+                            console.log(newUser);
+                            updateUser(data.name, imgURL)
+                                .then(() => {
+                                    reset();
+                                    toast.success('Register Successful!');
+                                    navigate(from, {replace: true});
                                 })
+                                .catch(err => {
+                                    setLoading(false)
+                                    console.log(err)
+                                    toast.error(err.message);
+                                });
                         })
                         .catch(err => {
+                            setLoading(false)
                             console.log(err)
                             toast.error(err.message);
-                        });
+                        })
                 })
                 .catch(err => {
+                    setLoading(false)
                     console.log(err)
                     toast.error(err.message);
                 })
+
+            return;
 
         } else {
             alert('Please enter right password')

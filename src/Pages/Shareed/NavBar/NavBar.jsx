@@ -75,7 +75,7 @@ const NavBar = () => {
 
                         </label>
                         <div title={user?.displayName} className="dropdown dropdown-end">
-                            <Button style={{backgroundColor: '#f0f0f0', color: '#000'}} variant="contained"><FaBars className="mt-1" /><FaUser className="text-xl ms-2" /></Button>
+                            <Button style={{backgroundColor: '#f0f0f0', color: '#000'}} variant="contained"><FaBars className="mt-1" />{user?.photoURL ? <img className="h-8 w-8 rounded-full" src={user?.photoURL} alt="" /> : <FaUser className="text-xl ms-2" />}</Button>
                             <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                                 {user ?
                                     <>
