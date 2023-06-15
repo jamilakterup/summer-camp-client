@@ -9,7 +9,8 @@ const AdminRoute = ({children}) => {
     const location = useLocation();
 
     if (loading || isLoading) {
-        return <span>Loading....</span>
+        return <div className="w-full h-screen flex justify-center items-center"><span className="loading loading-ring loading-lg"></span></div>
+
     }
 
     if (user && role === 'admin') {
