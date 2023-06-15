@@ -1,6 +1,8 @@
 import Swal from "sweetalert2";
 import useCart from "../../../Hooks/useCart";
 import {BsTrash} from 'react-icons/bs'
+import {Link} from "react-router-dom";
+import {Helmet} from "react-helmet";
 
 const ListedClass = () => {
     const [cart, refetch] = useCart();
@@ -38,6 +40,7 @@ const ListedClass = () => {
 
     return (
         <>
+            <Helmet title="SM Academy/listed-class" />
             <div>
                 <h2 className="text-5xl my-8 uppercase font-semibold">{cart.length} Listed Class and Total cost ${total}</h2>
             </div>
@@ -83,7 +86,7 @@ const ListedClass = () => {
                                 <td>{item.students}</td>
                                 <th>
                                     <button onClick={() => handleDeleteBtn(item._id)} className="btn btn-ghost"><BsTrash className="text-xl text-red-600" /></button>
-                                    <button className="btn btn-ghost text-[18px]">Pay</button>
+                                    <Link to={`/dashboard/payment/${item._id}`}> <button className="btn btn-ghost text-[18px]">Pay</button></Link>
                                 </th>
                             </tr>)
                         }

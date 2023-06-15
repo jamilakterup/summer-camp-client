@@ -14,6 +14,7 @@ import AddClass from "../Pages/Dashboard/AddClass/AddClass";
 import InstructorRoute from "./PrivetRoutes/InstructorRoute";
 import AdminRoute from "./PrivetRoutes/AdminRoute";
 import MyClass from "../Pages/Dashboard/MyClass/MyClass";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 const router = createBrowserRouter([
     {
@@ -50,6 +51,11 @@ const router = createBrowserRouter([
                 // for users
                 path: 'listedClass',
                 element: <ListedClass />
+            },
+            {
+                path: 'payment/:id',
+                element: <Payment />,
+                loader: ({params}) => fetch(`http://localhost:5000/carts/${params.id}`)
             },
             // for instructors
             {
