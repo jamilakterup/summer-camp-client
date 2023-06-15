@@ -15,6 +15,9 @@ import InstructorRoute from "./PrivetRoutes/InstructorRoute";
 import AdminRoute from "./PrivetRoutes/AdminRoute";
 import MyClass from "../Pages/Dashboard/MyClass/MyClass";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import UserHome from "../Pages/Dashboard/UserHome/UserHome";
+import InstructorHome from "../Pages/Dashboard/InstructorHome/InstructorHome";
+import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 
 const router = createBrowserRouter([
     {
@@ -48,6 +51,10 @@ const router = createBrowserRouter([
         element: <PrivetRoutes><Dashboard /></PrivetRoutes>,
         children: [
             {
+                path: 'student',
+                element: <UserHome />
+            },
+            {
                 // for users
                 path: 'listedClass',
                 element: <ListedClass />
@@ -59,6 +66,10 @@ const router = createBrowserRouter([
             },
             // for instructors
             {
+                path: 'instructor',
+                element: <InstructorRoute><InstructorHome /></InstructorRoute>
+            },
+            {
                 path: 'AddClass',
                 element: <InstructorRoute><AddClass /></InstructorRoute>
             },
@@ -67,6 +78,10 @@ const router = createBrowserRouter([
                 element: <InstructorRoute><MyClass /></InstructorRoute>
             },
             // for admin
+            {
+                path: 'admin',
+                element: <AdminRoute><AdminHome /></AdminRoute>
+            },
             {
                 path: 'allUsers',
                 element: <AdminRoute><AllUsers /></AdminRoute>

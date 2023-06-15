@@ -23,7 +23,7 @@ const Dashboard = () => {
     let dashboardContent;
     if (role === 'admin') {
         dashboardContent = <>
-            <li className="text-xl"><NavLink to='/dashboard/userHome'><FaHome />Admin Home</NavLink></li>
+            <li className="text-xl"><NavLink to='/dashboard/admin'><FaHome />Admin Home</NavLink></li>
             <li className="text-xl"><NavLink to='/dashboard/manageClasses'><SiGoogleclassroom />Manage Classes</NavLink></li>
             <li className="text-xl"><NavLink to='/dashboard/manageUsers'><MdManageAccounts />Manage Users</NavLink></li>
             <li className="text-xl"><NavLink to='/dashboard/allUsers'><FaUsers />All Users</NavLink></li>
@@ -72,6 +72,7 @@ const Dashboard = () => {
                 </div>
             </div>
             <Footer />
+            <ScrollRestoration />
             <ScrollRestoration />
         </>
     );

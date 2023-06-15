@@ -8,11 +8,14 @@ import {AuthContext} from "../../../components/Providers/AuthProviders";
 import {Button} from "@mui/material";
 import {IoMdNotificationsOutline} from 'react-icons/io';
 import useCart from "../../../Hooks/useCart";
+import useRole from "../../../Hooks/useRole";
 
 
 const NavBar = () => {
     const {user, logOutUser} = useContext(AuthContext);
     const [cart] = useCart();
+    const [role] = useRole();
+
     const [theme, setTheme] = useState('light');
     const toggleTheme = () => {
         setTheme(theme === 'dark' ? 'light' : 'dark');
@@ -36,7 +39,7 @@ const NavBar = () => {
         </li>
         {
             user?.email ? <li>
-                <Link to='/dashboard/listedClass' className="font-semibold">Dashboard </Link>
+                <Link to={`/dashboard/${role}`} className="font-semibold">Dashboard </Link>
             </li> : ''
         }
     </>

@@ -84,8 +84,9 @@ const CheckoutForm = ({price, data}) => {
             }
             axiosSecure.post('/payments', payment)
                 .then(res => {
-                    if (res.data.insertedId) {
-                        toast.success('confirmed')
+                    console.log('response', res);
+                    if (res.data.deleteResult.deletedCount > 0) {
+                        toast.success('updated successfully');
                     }
                 })
         }
