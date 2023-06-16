@@ -3,6 +3,7 @@ import {Helmet} from "react-helmet";
 import {BsTrash} from "react-icons/bs";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const AllUsers = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -43,8 +44,10 @@ const AllUsers = () => {
     }
 
     return (
-        <div>
-            <Helmet title="SM Academy/All-Users" />
+        <>
+            <Helmet title="SM Academy/dashboard/All-Users" />
+            <SectionTitle heading='manage-class' />
+
             <h3 className="text-3xl font-semibold mb-8">Total users {users.length}</h3>
 
             <div className="overflow-x-auto">
@@ -73,7 +76,7 @@ const AllUsers = () => {
                     </tbody>
                 </table>
             </div>
-        </div >
+        </ >
     );
 };
 

@@ -18,6 +18,11 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 import InstructorHome from "../Pages/Dashboard/InstructorHome/InstructorHome";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
+import EnrolledClass from "../Pages/Dashboard/EnrolledClass/EnrolledClass";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
+import EnrolledStudents from "../Pages/Dashboard/EnrolledStudents/EnrolledStudents";
+import FeedBack from "../Pages/Dashboard/FeedBack/FeedBack";
+import ManageClass from "../Pages/Dashboard/ManageClass/ManageClass";
 
 const router = createBrowserRouter([
     {
@@ -60,9 +65,17 @@ const router = createBrowserRouter([
                 element: <ListedClass />
             },
             {
+                path: 'enrolledClass',
+                element: <EnrolledClass />
+            },
+            {
                 path: 'payment/:id',
                 element: <Payment />,
                 loader: ({params}) => fetch(`http://localhost:5000/carts/${params.id}`)
+            },
+            {
+                path: 'paymentHistory',
+                element: <PaymentHistory />
             },
             // for instructors
             {
@@ -77,6 +90,14 @@ const router = createBrowserRouter([
                 path: 'myClass',
                 element: <InstructorRoute><MyClass /></InstructorRoute>
             },
+            {
+                path: 'enrolledStudents',
+                element: <InstructorRoute><EnrolledStudents /></InstructorRoute>
+            },
+            {
+                path: 'feedback',
+                element: <InstructorRoute><FeedBack /></InstructorRoute>
+            },
             // for admin
             {
                 path: 'admin',
@@ -89,6 +110,10 @@ const router = createBrowserRouter([
             {
                 path: 'manageUsers',
                 element: <AdminRoute><ManageUsers /></AdminRoute>
+            },
+            {
+                path: 'manageClasses',
+                element: <AdminRoute><ManageClass /></AdminRoute>
             }
         ]
     }

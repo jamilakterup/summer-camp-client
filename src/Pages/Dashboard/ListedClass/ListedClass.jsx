@@ -3,6 +3,7 @@ import useCart from "../../../Hooks/useCart";
 import {BsTrash} from 'react-icons/bs'
 import {Link} from "react-router-dom";
 import {Helmet} from "react-helmet";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const ListedClass = () => {
     const [cart, refetch] = useCart();
@@ -40,7 +41,8 @@ const ListedClass = () => {
 
     return (
         <>
-            <Helmet title="SM Academy/listed-class" />
+            <Helmet title="SM Academy/dashboard/selected-class" />
+            <SectionTitle heading='Selected-Class' />
             <div>
                 <h2 className="text-5xl my-8 uppercase font-semibold">{cart.length} Listed Class and Total cost ${total}</h2>
             </div>

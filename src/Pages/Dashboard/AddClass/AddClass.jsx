@@ -52,7 +52,7 @@ const AddClass = () => {
 
     return (
         <div>
-            <Helmet title="SM Academy/Add-a-class" />
+            <Helmet title="SM Academy/dashboard/Add-a-class" />
             <SectionTitle subHeading="What's new" heading="Add A Class" ></SectionTitle>
 
             <div className="flex flex-col-reverse md:flex-row container mx-auto mb-20">

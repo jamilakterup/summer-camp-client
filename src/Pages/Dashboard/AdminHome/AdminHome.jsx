@@ -1,6 +1,7 @@
 import {useQuery} from "@tanstack/react-query";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import {Helmet} from "react-helmet";
 
 const AdminHome = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -14,7 +15,8 @@ const AdminHome = () => {
     })
 
     return (
-        <div>
+        <>
+            <Helmet title="SM Academy/dashboard/Admin-home" />
             <SectionTitle heading='Welcome Home' />
             <div className="stats shadow w-full">
 
@@ -51,7 +53,7 @@ const AdminHome = () => {
                 </div>
 
             </div>
-        </div>
+        </>
     );
 };
 

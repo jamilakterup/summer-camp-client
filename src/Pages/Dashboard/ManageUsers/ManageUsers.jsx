@@ -2,6 +2,7 @@ import {useQuery} from "@tanstack/react-query";
 import {Helmet} from "react-helmet";
 import {toast} from "react-hot-toast";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const ManageUsers = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -49,7 +50,8 @@ const ManageUsers = () => {
 
     return (
         <div>
-            <Helmet title="SM Academy/Manage-Users" />
+            <Helmet title="SM Academy/dashboard/Manage-Users" />
+            <SectionTitle heading='manage-users' />
             <h3 className="text-3xl font-semibold mb-8">Total users {users?.length}</h3>
 
             <div className="overflow-x-auto">

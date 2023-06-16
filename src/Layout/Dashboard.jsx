@@ -30,18 +30,18 @@ const Dashboard = () => {
         </>
     } else if (role === 'instructor') {
         dashboardContent = <>
-            <li className="text-xl"><NavLink to='/dashboard/userHome'><FaHome />Instructor Home</NavLink></li>
+            <li className="text-xl"><NavLink to='/dashboard/instructor'><FaHome />Instructor Home</NavLink></li>
             <li className="text-xl"><NavLink to='/dashboard/AddClass'><BsFillJournalBookmarkFill />Add a Class</NavLink></li>
             <li className="text-xl"><NavLink to='/dashboard/myClass'><SiGoogleclassroom />My Classes</NavLink></li>
-            <li className="text-xl"><NavLink to='/dashboard/paymentHistory'><FaUsers />Total Enrolled Students</NavLink></li>
-            <li className="text-xl"><NavLink to='/dashboard/paymentHistory'><VscFeedback />Feedback</NavLink></li>
+            <li className="text-xl"><NavLink to='/dashboard/enrolledStudents'><FaUsers />Total Enrolled Students</NavLink></li>
+            <li className="text-xl"><NavLink to='/dashboard/feedback'><VscFeedback />Feedback</NavLink></li>
         </>
     }
     else {
         dashboardContent = <>
-            <li className="text-xl"><NavLink to='/dashboard/userHome'><FaHome />User Home</NavLink></li>
+            <li className="text-xl"><NavLink to='/dashboard/student'><FaHome />User Home</NavLink></li>
             <li className="text-xl"><NavLink to='/dashboard/listedClass'><MdFavorite />My Selected Classes {cart.length}</NavLink></li>
-            <li className="text-xl"><NavLink to='/dashboard/reservedClass'><BiSelectMultiple />My Enrolled Classes</NavLink></li>
+            <li className="text-xl"><NavLink to='/dashboard/enrolledClass'><BiSelectMultiple />My Enrolled Classes</NavLink></li>
             <li className="text-xl"><NavLink to='/dashboard/paymentHistory'><FaWallet />Payment History</NavLink></li>
         </>
     }

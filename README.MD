@@ -1,6 +1,7 @@
 ## Site name And logo
-SM Academy(summer camp academy)
 ![Logo](https://i.ibb.co/82gNM68/logo.png)
+
+SM Academy(summer camp academy)
 
 ## Features
 
