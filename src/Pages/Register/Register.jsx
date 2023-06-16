@@ -45,7 +45,7 @@ const Register = () => {
                             updateUser(data.name, imgURL)
                                 .then(() => {
                                     const savedUser = {name: data.name, email: data.email}
-                                    fetch('http://localhost:5000/users', {
+                                    fetch('https://summer-camp-school-server-coral-one.vercel.app/users', {
                                         method: 'POST',
                                         headers: {'Content-Type': 'application/json'},
                                         body: JSON.stringify(savedUser)
@@ -90,7 +90,7 @@ const Register = () => {
                 const loggedUser = result.user
                 console.log(loggedUser);
                 const savedUser = {name: loggedUser.displayName, email: loggedUser.email}
-                fetch('http://localhost:5000/users', {
+                fetch('https://summer-camp-school-server-coral-one.vercel.app/users', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(savedUser)

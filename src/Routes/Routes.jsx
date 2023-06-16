@@ -71,7 +71,7 @@ const router = createBrowserRouter([
             {
                 path: 'payment/:id',
                 element: <Payment />,
-                loader: ({params}) => fetch(`http://localhost:5000/carts/${params.id}`)
+                loader: ({params}) => fetch(`https://summer-camp-school-server-coral-one.vercel.app/carts/${params.id}`)
             },
             {
                 path: 'paymentHistory',

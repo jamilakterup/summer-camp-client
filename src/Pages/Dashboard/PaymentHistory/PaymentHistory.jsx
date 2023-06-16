@@ -4,7 +4,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import {Helmet} from "react-helmet";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
-// http://localhost:5000/payments/moon@gmail.com
+// https://summer-camp-school-server-coral-one.vercel.app/payments/moon@gmail.com
 const PaymentHistory = () => {
     const {user} = useAuth();
     const [axiosSecure] = useAxiosSecure();

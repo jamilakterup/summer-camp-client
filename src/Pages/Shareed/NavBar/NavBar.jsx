@@ -66,13 +66,12 @@ const NavBar = () => {
                         </ul>
                     </div>
                     <div className="navbar-end gap-2">
-                        <div className="indicator me-4">
+                        <Link to='/dashboard/listedClass'><div className="indicator me-4">
                             <span className="indicator-item badge bg-[#f0f0f0]">{cart?.length || 0}</span>
                             <IoMdNotificationsOutline className="text-3xl" />
                             {/* <button className="btn">inbox</button> */}
-                        </div>
+                        </div></Link>
                         {/* <FaMoon /> */}
-                        {/* ToDOS */}
                         <label className="swap swap-rotate">
 
                             {/* this hidden checkbox controls the state */}

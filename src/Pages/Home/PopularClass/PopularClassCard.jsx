@@ -28,7 +28,7 @@ const PopularClassCard = ({item}) => {
         if (user && user.email) {
             const cartItem = {itemId: _id, classImg, className, totalSeat, students, price, instructor, email: user.email, instructorEmail}
             console.log(cartItem);
-            fetch('http://localhost:5000/carts', {
+            fetch('https://summer-camp-school-server-coral-one.vercel.app/carts', {
                 method: 'POST',
                 headers: {'content-type': 'application/json'},
                 body: JSON.stringify(cartItem)

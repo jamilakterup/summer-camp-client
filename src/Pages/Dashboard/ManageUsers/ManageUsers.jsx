@@ -10,14 +10,14 @@ const ManageUsers = () => {
     const {data: users = [], refetch} = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await axiosSecure.get('http://localhost:5000/users')
+            const res = await axiosSecure.get('https://summer-camp-school-server-coral-one.vercel.app/users')
             return res.data;
         }
     });
 
 
     const handleMakeAdmin = (user) => {
-        fetch(`http://localhost:5000/users/role/${user._id}`, {
+        fetch(`https://summer-camp-school-server-coral-one.vercel.app/users/role/${user._id}`, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({role: 'admin'})
@@ -33,7 +33,7 @@ const ManageUsers = () => {
     }
 
     const handleMakeInstructor = user => {
-        fetch(`http://localhost:5000/users/role/${user._id}`, {
+        fetch(`https://summer-camp-school-server-coral-one.vercel.app/users/role/${user._id}`, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({role: 'instructor'})
